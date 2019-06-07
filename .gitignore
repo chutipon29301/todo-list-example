@@ -1,0 +1,21 @@
+# Dependency directory
+node_modules/
+
+# Environment variables
+.env
+
+# OS metadata
+.DS_Store
+Thumbs.db
+
+# Test log
+coverage/
+
+# Log storage
+log/
+
+# Editor configuration
+.vscode/*
+
+# Build folder
+dist
