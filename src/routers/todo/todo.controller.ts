@@ -7,5 +7,12 @@ import { todo } from '../../models/todo.model';
 
 const router: Router = Router();
 
+router.get(
+    '/',
+    asyncifyHandler(async (req, res) => {
+        const todos = await todoService.list(todo);
+        res.status(200).send({ todos });
+    }),
+);
 
 export default router;
