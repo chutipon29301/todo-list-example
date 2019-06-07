@@ -53,4 +53,13 @@ router.patch(
         res.sendStatus(200);
     }),
 );
+
+router.delete(
+    '/:id',
+    param('id').isString(),
+    validateRequest,
+    asyncifyHandler(async (req, res) => {
+
+    }),
+);
 export default router;
