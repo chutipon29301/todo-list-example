@@ -12,4 +12,7 @@ export default {
         const todo = new todoModel({...todoInterface, status: 'todo'});
         await todo.save();
     },
+    async list(todoModel: Model<Todo>): Promise<Todo[]> {
+        return await todoModel.find();
+    },
 };
