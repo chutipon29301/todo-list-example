@@ -7,16 +7,24 @@ export interface CreateTodo {
     description: string;
     dueDate: Date;
 }
+
 export default {
     async create(todoModel: Model<Todo>, todoInterface: CreateTodo) {
-        const todo = new todoModel({...todoInterface, status: 'todo'});
+        const todo = new todoModel({ ...todoInterface, status: 'todo' });
         await todo.save();
     },
     async list(todoModel: Model<Todo>): Promise<Todo[]> {
         return await todoModel.find();
     },
-    async edit(todoModel: Model<Todo>, id: string, partialTodoInterface: Partial<Todo>) {
-        await todoModel.updateOne({ _id: id }, { $set: partialOf<Todo>(partialTodoInterface) });
+    async edit(
+        todoModel: Model<Todo>,
+        id: string,
+        partialTodoInterface: Partial<Todo>,
+    ) {
+        await todoModel.updateOne(
+            { _id: id },
+            { $set: partialOf<Todo>(partialTodoInterface) },
+        );
     },
     async delete(todoModel: Model<Todo>, id: string) {
         await todoModel.deleteOne({ _id: id });

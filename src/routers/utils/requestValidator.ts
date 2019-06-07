@@ -1,4 +1,4 @@
-import { Request, Response,NextFunction } from 'express';
+import { Request, Response, NextFunction } from 'express';
 import { validationResult } from 'express-validator/check';
 
 export function validateRequest(

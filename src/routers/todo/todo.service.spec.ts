@@ -1,5 +1,5 @@
 describe('TodoService', () => {
-    beforeAll(() => { });
+    beforeAll(() => {});
 
-    afterAll(() => { });
+    afterAll(() => {});
 });

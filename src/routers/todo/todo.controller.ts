@@ -42,14 +42,12 @@ router.patch(
     ]),
     validateRequest,
     asyncifyHandler(async (req, res) => {
-        await todoService.edit(
-            todo,
-            req.params.id, {
-                topic: req.body.topic,
-                description: req.body.description,
-                dueDate: req.body.dueDate,
-                status: req.body.status,
-            });
+        await todoService.edit(todo, req.params.id, {
+            topic: req.body.topic,
+            description: req.body.description,
+            dueDate: req.body.dueDate,
+            status: req.body.status,
+        });
         res.sendStatus(200);
     }),
 );
@@ -58,8 +56,6 @@ router.delete(
     '/:id',
     param('id').isString(),
     validateRequest,
-    asyncifyHandler(async (req, res) => {
-
-    }),
+    asyncifyHandler(async (req, res) => {}),
 );
 export default router;
