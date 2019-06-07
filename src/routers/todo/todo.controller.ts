@@ -15,4 +15,19 @@ router.get(
     }),
 );
 
+router.post(
+    '/',
+    body('topic').isString(),
+    body('description').isString(),
+    body('dueDate').isISO8601(),
+    validateRequest,
+    asyncifyHandler(async (req, res) => {
+        await todoService.create(todo, {
+            topic: req.body.topic,
+            description: req.body.description,
+            dueDate: req.body.dueDate,
+        });
+        res.sendStatus(201);
+    }),
+);
 export default router;
