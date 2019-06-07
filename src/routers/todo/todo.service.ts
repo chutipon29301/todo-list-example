@@ -18,4 +18,7 @@ export default {
     async edit(todoModel: Model<Todo>, id: string, partialTodoInterface: Partial<Todo>) {
         await todoModel.updateOne({ _id: id }, { $set: partialOf<Todo>(partialTodoInterface) });
     },
+    async delete(todoModel: Model<Todo>, id: string) {
+        await todoModel.deleteOne({ _id: id });
+    },
 };
