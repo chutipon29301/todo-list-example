@@ -15,4 +15,7 @@ export default {
     async list(todoModel: Model<Todo>): Promise<Todo[]> {
         return await todoModel.find();
     },
+    async edit(todoModel: Model<Todo>, id: string, partialTodoInterface: Partial<Todo>) {
+        await todoModel.updateOne({ _id: id }, { $set: partialOf<Todo>(partialTodoInterface) });
+    },
 };
