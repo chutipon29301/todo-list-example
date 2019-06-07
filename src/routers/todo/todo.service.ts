@@ -8,4 +8,8 @@ export interface CreateTodo {
     dueDate: Date;
 }
 export default {
+    async create(todoModel: Model<Todo>, todoInterface: CreateTodo) {
+        const todo = new todoModel({...todoInterface, status: 'todo'});
+        await todo.save();
+    },
 };
