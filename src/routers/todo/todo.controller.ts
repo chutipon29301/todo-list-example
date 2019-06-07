@@ -30,4 +30,27 @@ router.post(
         res.sendStatus(201);
     }),
 );
+
+router.patch(
+    '/:id',
+    param('id').isString(),
+    oneOf([
+        body('topic').isString(),
+        body('description').isString(),
+        body('dueDate').isISO8601(),
+        body('status').isString(),
+    ]),
+    validateRequest,
+    asyncifyHandler(async (req, res) => {
+        await todoService.edit(
+            todo,
+            req.params.id, {
+                topic: req.body.topic,
+                description: req.body.description,
+                dueDate: req.body.dueDate,
+                status: req.body.status,
+            });
+        res.sendStatus(200);
+    }),
+);
 export default router;
